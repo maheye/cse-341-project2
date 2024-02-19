@@ -1,19 +1,85 @@
-//LOCALHOST 
-## Get all users
+### Localhost Requests
 
-Send Request
-GET http://localhost:3000/users
+#### Main Localhost GET http://localhost:3000
 
-### Get a user by id
-Send Request
-GET http://localhost:3000/users/65c7d2b9a2e00a7c56088442
+#### GET All Users Localhost GET http://localhost:3000/users
 
-### Create contact 
-Send Request
-POST http://localhost:3000/users HTTP/1.1 
-content-type: application/json
+#### GET Single User Localhost GET http://localhost:3000/users/1234567890
+
+#### Create Users Localhost POST http://localhost:3000/users content-type: application/json
 
 {
-    "email":"test@test.com",
-    "username":"username"
+"username": "AustinMa", "email": "email"
 }
+
+#### Update users Localhost PUT http://localhost:3000/users/9876543210 content-type: application/json
+
+{
+"username": "AustinMa", "email": "email"
+}
+
+#### Delete user Localhost DELETE http://localhost:3000/users/5678901234
+
+### Render Requests
+
+#### Main Render GET https://project2-u3gt.onrender.com
+
+#### GET All Users Render GET https://project2-u3gt.onrender.com/users
+
+#### GET Single User Render GET https://project2-u3gt.onrender.com/users/1234567890
+
+#### Create User Render POST https://project2-u3gt.onrender.com/users content-type: application/json
+
+{
+"username": "AustinMa", "email": "email"
+}
+
+#### Update user Render PUT https://project2-u3gt.onrender.com/users/9876543210 content-type: application/json
+
+{
+"username": "AustinMa", "email": "email"
+}
+
+#### Delete user Render DELETE https://project2-u3gt.onrender.com/users/5678901234
+
+#### Main Localhost GET http://localhost:3000
+
+#### GET All Blogs Localhost GET http://localhost:3000/blogs
+
+#### GET Single Blog Localhost GET http://localhost:3000/blogs/1234567890
+
+#### Create Blog Localhost POST http://localhost:3000/blogs Content-Type: application/json
+
+{
+"title": "Sample Blog Title", "user": "Sample User", "category": "Sample Category", "content": "Sample Content", "published_date": "2024-01-25", "tags": ["tag1", "tag2"], "format": "html"
+}
+
+#### Update Blog Localhost PUT http://localhost:3000/blogs/9876543210 Content-Type: application/json
+
+{
+"title": "Updated Blog Title", "user": "Updated User", "category": "Updated Category", "content": "Updated Content", "published_date": "2024-01-26", "tags": ["tag3", "tag4"], "format": "markdown"
+}
+
+#### Delete Blog Localhost DELETE http://localhost:3000/blogs/5678901234
+
+#### Render Requests
+
+#### Main Render GET https://project2-u3gt.onrender.com
+
+#### GET All Blogs Render GET https://project2-u3gt.onrender.com/blogs
+
+#### GET Single Blog Render GET https://project2-u3gt.onrender.com/blogs/1234567890
+
+#### Create Blog Render POST https://project2-u3gt.onrender.com/blogs Content-Type: application/json
+
+{
+"title": "Sample Blog Title", "user": "Sample User", "category": "Sample Category", "content": "Sample Content", "published_date": "2024-01-25", "tags": ["tag1", "tag2"], "format": "html"
+}
+
+#### Update Blog Render PUT https://project2-u3gt.onrender.com/blogs/9876543210 Content-Type: application/json
+
+{
+"title": "Updated Blog Title", "user": "Updated User", "category": "Updated Category", "content": "Updated Content", "published_date": "2024-01-26", "tags": ["tag3", "tag4"], "format": "markdown"
+}
+
+#### Delete Blog Render DELETE https://project2-u3gt.onrender.com/blogs/5678901234
