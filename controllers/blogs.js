@@ -7,7 +7,7 @@ const getAllBlogs = async (req, res) => {
         const result = await mongodb.getDatabase().db().collection('blogs').find();
         result.toArray().then((blogs) => {
             res.setHeader('Content-Type', 'application/json');
-            res.status(204).json(blogs);
+            res.status(200).json(blogs);
         });
     } catch (error) {
         console.error(error);
@@ -19,7 +19,7 @@ const getSingleBlog = async (req, res) => {
     //#swagger.tags=['blogs']
     const blogId = req.params.id;
     if (!ObjectId.isValid(blogId)) {
-        return res.status(500).json({ error: 'Invalid blog ID' });
+        return res.status(400).json({ error: 'Invalid blog ID' });
     }
 
     try {
@@ -29,7 +29,7 @@ const getSingleBlog = async (req, res) => {
                 return res.status(404).json({ error: 'Blog not found' });
             }
             res.setHeader('Content-Type', 'application/json');
-            res.status(204).json(blogs[0]);
+            res.status(200).json(blogs[0]);
         });
     } catch (error) {
         console.error(error);
@@ -39,17 +39,17 @@ const getSingleBlog = async (req, res) => {
 
 const createBlog = async (req, res) => {
     //#swagger.tags=['blogs']
-    const { title, user, category, content, published_date, tags, format } = req.body;
+    const { title, users, category, content, published_date, tags, format } = req.body;
 
     // Data validation
-    if (!title || !user || !content || !published_date || !tags || !format) {
-        return res.status(500).json({ error: "Title, user, content, published date, tags, and format are required." });
+    if (!title || !users || !content || !published_date || !tags || !format) {
+        return res.status(400).json({ error: "Title, users, content, published date, tags, and format are required." });
     }
 
     // Create the updated blog object
     const blog = {
         title,
-        user,
+        users,
         category,
         content,
         published_date,
@@ -77,17 +77,17 @@ const updateBlog = async (req, res) => {
     const blogId = new ObjectId(req.params.id);
 
     // Destructure the request body
-    const { title, user, category, content, published_date, tags, format } = req.body;
+    const { title, users, category, content, published_date, tags, format } = req.body;
 
     // Data validation
-    if (!title || !user || !content || !published_date || !tags || !format) {
-        return res.status(500).json({ error: "Title, user, content, published date, tags, and format are required." });
+    if (!title || !users || !content || !published_date || !tags || !format) {
+        return res.status(400).json({ error: "Title, users, content, published date, tags, and format are required." });
     }
 
     // Create the updated blog object
     const updatedBlog = {
         title,
-        user,
+        users,
         category,
         content,
         published_date,

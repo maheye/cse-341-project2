@@ -1,52 +1,44 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Users Api",
-    "description": "Users Api",
+    "title": "Project 2 API",
+    "description": "API documentation for Project 2",
     "version": "1.0.0"
   },
   "host": "project2-u3gt.onrender.com",
   "basePath": "/",
+  "tags": [
+    {
+      "name": "blogs",
+      "description": "Operations related to blogs"
+    },
+    {
+      "name": "Authors",
+      "description": "Operations related to authors"
+    },
+    {
+      "name": "Comments",
+      "description": "Operations related to comments"
+    }
+  ],
   "schemes": [
     "https"
   ],
   "paths": {
-    "/": {
+    "/blogs/": {
       "get": {
-        "tags": [
-          "Hello world"
-        ],
-        "description": "",
+        "tags": ["blogs"],
+        "description": "Get all blogs",
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/users/": {
-      "get": {
-        "tags": [
-          "users"
-        ],
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "post": {
-        "tags": [
-          "users"
-        ],
-        "description": "",
+        "tags": ["blogs"],
+        "description": "Create a new blog",
         "parameters": [
           {
             "name": "body",
@@ -54,35 +46,29 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                }
+                "title": {"example": "any"},
+                "author": {"example": "any"},
+                "category": {"example": "any"},
+                "content": {"example": "any"},
+                "published_date": {"example": "any"},
+                "tags": {"example": "any"},
+                "format": {"example": "any"}
               }
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
         }
       }
     },
-    "/users/{id}": {
+    "/blogs/{id}": {
       "get": {
-        "tags": [
-          "users"
-        ],
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "tags": ["blogs"],
+        "description": "Get a single blog by ID",
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -92,25 +78,12 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "200": {"description": "OK"}
         }
       },
       "put": {
-        "tags": [
-          "users"
-        ],
-        "description": "",
+        "tags": ["blogs"],
+        "description": "Update a blog",
         "parameters": [
           {
             "name": "id",
@@ -124,30 +97,26 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                }
+                "title": {"example": "any"},
+                "author": {"example": "any"},
+                "category": {"example": "any"},
+                "content": {"example": "any"},
+                "published_date": {"example": "any"},
+                "tags": {"example": "any"},
+                "format": {"example": "any"}
               }
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
         }
       },
       "delete": {
-        "tags": [
-          "users"
-        ],
-        "description": "",
+        "tags": ["blogs"],
+        "description": "Delete a blog by ID",
         "parameters": [
           {
             "name": "id",
@@ -157,12 +126,295 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/authors/": {
+      "get": {
+        "tags": ["Authors"],
+        "description": "Get all authors",
+        "responses": {
+          "200": {"description": "OK"}
+        }
+      },
+      "post": {
+        "tags": ["Authors"],
+        "description": "Create a new author",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "authorname": {"type": "string", "example": "any"},
+                "email": {"type": "string", "example": "any"}
+              }
+            }
           }
+        ],
+        "responses": {
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/authors/{id}": {
+      "get": {
+        "tags": ["Authors"],
+        "description": "Get a single author by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"}
+        }
+      },
+      "put": {
+        "tags": ["Authors"],
+        "description": "Update an author",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "githubId": {"type": "string", "example": "any"},
+                "authorname": {"type": "string", "example": "any"},
+                "email": {"type": "string", "example": "any"},
+                "profilePicture": {"type": "string", "example": "any"},
+                "aboutMe": {"type": "string", "example": "any"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "delete": {
+        "tags": ["Authors"],
+        "description": "Delete an author by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/comments/": {
+      "get": {
+        "tags": ["Comments"],
+        "description": "Get all comments",
+        "responses": {
+          "200": {"description": "OK"}
+        }
+      },
+      "post": {
+        "tags": ["Comments"],
+        "description": "Create a new comment",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blog_id": {"type": "string", "example": "any"},
+                "commenttext": {"type": "string", "example": "any"},
+                "author": {"type": "string", "example": "any"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/comments/{id}": {
+      "get": {
+        "tags": ["Comments"],
+        "description": "Get a single comment by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"}
+        }
+      },
+      "put": {
+        "tags": ["Comments"],
+        "description": "Update a comment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blog_id": {"type": "string", "example": "any"},
+                "commenttext": {"type": "string", "example": "any"},
+                "author": {"type": "string", "example": "any"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "delete": {
+        "tags": ["Comments"],
+        "description": "Delete a comment by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/reactions/": {
+      "get": {
+        "tags": ["Reactions"],
+        "description": "Get all reactions",
+        "responses": {
+          "200": {"description": "OK"}
+        }
+      },
+      "post": {
+        "tags": ["Reactions"],
+        "description": "Create a new reaction",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "commentId": {"type": "string", "example": "any"},
+                "reactionType": {"type": "string", "example": "any"},
+                "author": {"type": "string", "example": "any"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/reactions/{id}": {
+      "get": {
+        "tags": ["Reactions"],
+        "description": "Get a single reaction by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {"description": "OK"}
+        }
+      },
+      "put": {
+        "tags": ["Reactions"],
+        "description": "Update a reaction",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "commentId": {"type": "string", "example": "any"},
+                "reactionType": {"type": "string", "example": "any"},
+                "author": {"type": "string", "example": "any"}
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "delete": {
+        "tags": ["Reactions"],
+        "description": "Delete a reaction by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {"description": "No Content"},
+          "401": {"description": "Unauthorized"},
+          "500": {"description": "Internal Server Error"}
         }
       }
     }
