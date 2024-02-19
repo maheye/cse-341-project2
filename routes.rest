@@ -1,0 +1,19 @@
+//LOCALHOST 
+## Get all users
+
+Send Request
+GET http://localhost:3000/users
+
+### Get a user by id
+Send Request
+GET http://localhost:3000/users/65c7d2b9a2e00a7c56088442
+
+### Create contact 
+Send Request
+POST http://localhost:3000/users HTTP/1.1 
+content-type: application/json
+
+{
+    "email":"test@test.com",
+    "username":"username"
+}
