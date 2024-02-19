@@ -8,7 +8,6 @@
   "host": "project2-u3gt.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {

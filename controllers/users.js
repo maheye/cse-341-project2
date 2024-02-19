@@ -24,7 +24,7 @@ const getSingle = async (req, res) => {
             return res.status(400).json({ error: 'Invalid user ID' });
         }
 
-        const result = await mongodb.getDatabase().db().collection("users").find({_id: new ObjectId(userId) });
+        const result = await mongodb.getDatabase().db().collection("users").find({_id: ObjectId(userId)});
         result.toArray().then((users) => {
             if (users.length === 0) {
                 return res.status(404).json({ error: 'User not found' });
